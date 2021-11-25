@@ -20,7 +20,7 @@ public class PetClinicServiceImpl implements PetClinicService {
 	}
 	
 	@Override
-	public List<Owner> findOwners() {
+	public List<Owner> findOwner() {
 		return ownerRepository.findAll();
 	}
 
@@ -49,18 +49,6 @@ public class PetClinicServiceImpl implements PetClinicService {
 	@Override
 	public void deleteOwner(Long id) {
 		ownerRepository.delete(id);
-	}
-
-	@Override
-	public List<Owner> findOwners() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Owner> findOwners(String lastName) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

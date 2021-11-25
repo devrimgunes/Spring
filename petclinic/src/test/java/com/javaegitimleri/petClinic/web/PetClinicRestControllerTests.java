@@ -38,7 +38,7 @@ public class PetClinicRestControllerTests {
 	public void testGetOwnerById() {
 		ResponseEntity<Owner> response = restTemplate.getForEntity("http://localhost:8080/rest/owner/1", Owner.class);
 		MatcherAssert.assertThat(response.getStatusCodeValue(), Matchers.equalTo(200));
-		MatcherAssert.assertThat(response.getBody().getFirstName(), Matchers.equalTo("Ziya"));
+		MatcherAssert.assertThat(response.getBody().getFirstName(), Matchers.equalTo("Serpil"));
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class PetClinicRestControllerTests {
 
 		List<String> firstNames = body.stream().map(e -> e.get("firstName")).collect(Collectors.toList());
 
-		MatcherAssert.assertThat(firstNames, Matchers.containsInAnyOrder("Ali", "Arda", "Lale"));
+		MatcherAssert.assertThat(firstNames, Matchers.containsInAnyOrder("Devrim", "Zeynep", "Sezer"));
 	}
 	
 	@Test
@@ -88,11 +88,11 @@ public class PetClinicRestControllerTests {
 
 		MatcherAssert.assertThat(owner.getFirstName(), Matchers.equalTo("Ela"));
 
-		owner.setFirstName("Ela Bal");
+		owner.setFirstName("Ela Tatlı");
 		restTemplate.put("http://localhost:8080/rest/owner/4", owner);
 		owner = restTemplate.getForObject("http://localhost:8080/rest/owner/4", Owner.class);
 
-		MatcherAssert.assertThat(owner.getFirstName(), Matchers.equalTo("Ela Bal"));
+		MatcherAssert.assertThat(owner.getFirstName(), Matchers.equalTo("Ela Tatlı"));
 	}
 	
 	@Test

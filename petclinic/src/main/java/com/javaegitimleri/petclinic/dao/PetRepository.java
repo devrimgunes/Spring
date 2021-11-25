@@ -9,6 +9,6 @@ public interface PetRepository {
 	List<Pet> findByOwnerId(Long ownerId);
 	void create(Pet pet);
 	Pet update(Pet pet);
-	void  delete(Long id);
+	void delete(Long id);
 	void deleteByOwnerId(Long ownerId);
 }

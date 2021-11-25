@@ -19,7 +19,7 @@ public class PetClinicController {
 	@RequestMapping("/owners")
 	public ModelAndView getOwners() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("owners", petClinicService.findOwners());
+		mav.addObject("owners", petClinicService.findOwner());
 		mav.setViewName("owners");
 		return mav;
 	}
@@ -28,5 +28,19 @@ public class PetClinicController {
 	@ResponseBody
 	public String welcome() {
 		return "Welcome to PetClinic World!";
+	}
+	
+	@RequestMapping(value={"/","/index.html"})
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+		return mav;
+	}
+	
+	@RequestMapping(value="/login.html")
+	public ModelAndView loginPage() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("login");
+		return mav;
 	}
 }

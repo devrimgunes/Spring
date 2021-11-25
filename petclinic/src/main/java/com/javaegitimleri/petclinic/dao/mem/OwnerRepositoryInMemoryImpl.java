@@ -45,18 +45,8 @@ public class OwnerRepositoryInMemoryImpl implements OwnerRepository {
 	}
 
 	@Override
-	public List<Owner> findAll() {
-		return new ArrayList<>(ownersMap.values());
-	}
-
-	@Override
 	public Owner findById(Long id) {
 		return ownersMap.get(id);
-	}
-
-	@Override
-	public List<Owner> findByLastName(String lastName) {
-		return ownersMap.values().stream().filter(o->o.getLastName().equals(lastName)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -66,14 +56,26 @@ public class OwnerRepositoryInMemoryImpl implements OwnerRepository {
 	}
 
 	@Override
+	public List<Owner> findByLastName(String lastName) {
+		return ownersMap.values().stream()
+				.filter(o -> o.getLastName().equals(lastName))
+				.collect(Collectors.toList());
+	}
+
+	@Override
 	public Owner update(Owner owner) {
-		return ownersMap.replace(owner.getId(), owner);
+		ownersMap.replace(owner.getId(), owner);
+		return owner;
 	}
 
 	@Override
 	public void delete(Long id) {
 		ownersMap.remove(id);
+	}
 
+	@Override
+	public List<Owner> findAll() {
+		return new ArrayList<>(ownersMap.values());
 	}
 
 }
